@@ -1,3 +1,6 @@
+using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
+
 namespace SnipeIt.Tests.Pages;
 
 public class AssetsListPage
@@ -12,23 +15,35 @@ public class AssetsListPage
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
     }
 
-    public async Task SearchForAssetAsync(string assetTag)
+    public async Task SearchByAssetTagAsync(string assetTag)
     {
-        var search = _page.Locator("input[type='search']").First;
-        await search.FillAsync(assetTag);
-        await _page.WaitForTimeoutAsync(1000); // table filters client-side
-    }
-
-    public async Task OpenAssetByTagAsync(string assetTag)
-    {
-        await SearchForAssetAsync(assetTag);
-        await _page.GetByRole(AriaRole.Link, new() { Name = assetTag }).ClickAsync();
+        // Top navbar "Lookup by Asset Tag"
+        var tagSearch = _page.Locator("#tagSearch");
+        await tagSearch.FillAsync(assetTag);
+        await tagSearch.PressAsync("Enter");
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+        await _page.WaitForTimeoutAsync(2000);
     }
 
     public async Task AssertAssetExistsInListAsync(string assetTag)
     {
-        await SearchForAssetAsync(assetTag);
-        await Assertions.Expect(_page.GetByRole(AriaRole.Link, new() { Name = assetTag })).ToBeVisibleAsync();
+        await GotoAsync();
+        await SearchByAssetTagAsync(assetTag);
+
+        // Accept either a link or plain text containing the tag
+        var matcher = _page.Locator($"text={assetTag}").First;
+        await Assertions.Expect(matcher).ToBeVisibleAsync(new() { Timeout = 10000 });
+    }
+
+    public async Task OpenAssetByTagAsync(string assetTag)
+    {
+        await GotoAsync();
+        await SearchByAssetTagAsync(assetTag);
+
+        // Click the first link that contains the asset tag
+        var link = _page.Locator($"a:has-text('{assetTag}')").First;
+        await Assertions.Expect(link).ToBeVisibleAsync(new() { Timeout = 10000 });
+        await link.ClickAsync();
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
     }
 }

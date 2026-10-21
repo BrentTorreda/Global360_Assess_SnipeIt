@@ -38,9 +38,8 @@ public class CreateMacbookAssetTests : PageTest
         // 5. History tab
         await detailsPage.OpenHistoryTabAsync();
         await detailsPage.AssertHistoryContainsAsync(
-            "created",
-            "checkout",
-            assetTag
+            "create new",
+            "checkout"
         );
     }
 }

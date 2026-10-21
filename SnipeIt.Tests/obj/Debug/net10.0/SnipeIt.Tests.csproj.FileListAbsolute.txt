@@ -435,6 +435,7 @@ C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\ne
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt.Tests.AssemblyInfoInputs.cache
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt.Tests.AssemblyInfo.cs
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt.Tests.csproj.CoreCompileInputs.cache
+C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt.Tests.sourcelink.json
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt..E06DF1E6.Up2Date
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\SnipeIt.Tests.dll
 C:\Users\umeza\Dropbox\_PROJ\Global360_Assess_SnipeIt\SnipeIt.Tests\obj\Debug\net10.0\refint\SnipeIt.Tests.dll
